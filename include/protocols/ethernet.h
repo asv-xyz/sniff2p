@@ -2,11 +2,11 @@
 
 #include <types.h>
 
-#pragma pack(push, 1)
+#pragma pack(push, 1)   // Disabling allingment
 typedef struct _EthernetHeader {
     U8  dst_mac[6];
     U8  src_mac[6];
     U16 ether_type;
 } EthernetHeader;
 
-#pragma pack(pop)
+#pragma pack(pop)       // Enabling allingment
