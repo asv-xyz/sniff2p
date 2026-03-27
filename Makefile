@@ -1,5 +1,6 @@
 CC=g++
 INCDIRS=./include/
+TGTDIR=./bin/
 CFLAGS=-Wall -Wextra $(foreach D,$(INCDIRS),-I$(D))
 SRC=$(wildcard ./src/*.cpp)
 OBJ=$(SRC:.cpp=.o)
@@ -10,6 +11,7 @@ TGT=./bin/executable
 all: $(TGT)
 
 $(TGT): $(OBJ)
+	@mkdir -p $(TGTDIR)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(TGT)
 
 %.o: %.cpp
