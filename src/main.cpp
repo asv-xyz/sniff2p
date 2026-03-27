@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdint>
+#include <iomanip>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/if_ether.h>
@@ -38,15 +39,15 @@ int main(void) {
         auto src_oct_5 = eth->src_mac[4];
         auto src_oct_6 = eth->src_mac[5];
 
-        std::cout 
+        std::cout << std::hex << std::setfill('0')
             << "MAC: "
-            << (int)src_oct_1 << ":"
-            << (int)src_oct_2 << ":"
-            << (int)src_oct_3 << ":"
-            << (int)src_oct_4 << ":"
-            << (int)src_oct_5 << ":"
-            << (int)src_oct_6
-        << std::endl;
+            << std::setw(2) << (int)src_oct_1 << ":"
+            << std::setw(2) << (int)src_oct_2 << ":"
+            << std::setw(2) << (int)src_oct_3 << ":"
+            << std::setw(2) << (int)src_oct_4 << ":"
+            << std::setw(2) << (int)src_oct_5 << ":"
+            << std::setw(2) << (int)src_oct_6
+        << std::dec << std::endl;
     }
 
     close(sockfd);
