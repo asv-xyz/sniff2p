@@ -2,7 +2,7 @@
 
 #include <types.h>
 
-#pragma pack(push, 1)
+#pragma pack(push, 1)   // disabling allingment
 typedef struct _IPHeader {
     U8  ihl : 4;        // ip header length
     U8  version : 4;
@@ -21,4 +21,4 @@ typedef struct _IPHeader {
     U32 dst_ip;
 } IPHeader;
 
-#pragma pack(pop)
+#pragma pack(pop)       // enabling allingment
