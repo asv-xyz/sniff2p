@@ -5,7 +5,7 @@ A terminal packet sniffer written in C++ for GNU/Linux
 * `base-devel`
 
 ## Compiling ⚙️
-To build inside bin:
+To build:
 ```makefile
 make
 ```
