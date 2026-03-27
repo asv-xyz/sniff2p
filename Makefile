@@ -1,5 +1,5 @@
 CC=g++
-INCDIRS=./include/core/ ./include/utils/ ./include/protocols/
+INCDIRS=./include/
 CFLAGS=-Wall -Wextra $(foreach D,$(INCDIRS),-I$(D))
 SRC=$(wildcard ./src/*.cpp)
 OBJ=$(SRC:.cpp=.o)
