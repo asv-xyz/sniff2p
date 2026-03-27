@@ -2,7 +2,7 @@
 
 #include "types.h"
 
-#pragma pack(push, 1)   // disabling allingment
+#pragma pack(push, 1)           // disabling allingment
 typedef struct _TCPHeader {
     U16 src_port;
     U16 dst_port;
@@ -11,15 +11,15 @@ typedef struct _TCPHeader {
 
     U32 ack_num;
 
-    U8  rb  : 4;         // reserved bits
-    U8  hl  : 4;         // header length
-    U8  fin : 1;
-    U8  syn : 1;
-    U8  rst : 1;
-    U8  psh : 1;
-    U8  ack : 1;
-    U8  urg : 1;
-    U8  rb2 : 2;
+    U8  rb              : 4;    // reserved bits
+    U8  hl              : 4;    // header length
+    U8  fin             : 1;
+    U8  syn             : 1;
+    U8  rst             : 1;
+    U8  psh             : 1;
+    U8  ack             : 1;
+    U8  urg             : 1;
+    U8  rb2             : 2;
     U16 win_size;
 
     U16 checksum;
@@ -28,4 +28,4 @@ typedef struct _TCPHeader {
     U8 data[0];
 } TCPHeader;
 
-#pragma pack(pop)       // enabling allingment
+#pragma pack(pop)               // enabling allingment
