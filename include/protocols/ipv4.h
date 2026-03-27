@@ -19,6 +19,6 @@ typedef struct _IPHeader {
 
     U32 src_ip;
     U32 dst_ip;
-} IPheader;
+} IPHeader;
 
 #pragma pack(pop)
