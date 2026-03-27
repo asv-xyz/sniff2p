@@ -14,7 +14,7 @@ To clean object files and executable:
 make clean
 ```
 
-## Running 🚀 (not really implemented yet)
+## Running 🚀
 ```bash
 sudo ./bin/executable
 ```
