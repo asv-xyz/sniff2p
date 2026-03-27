@@ -1,8 +1,10 @@
 #include <iostream>
 #include <cstdlib>
+#include <cstdint>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/if_ether.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 #include "protocols/ethernet.h"
@@ -17,7 +19,35 @@ int main(void) {
         std::cerr << "Couldn't create socket (try with sudo)" << std::endl;
         return EXIT_FAILURE;
     }
-    std::cout << "Socket successfully created!" << std::endl;
+    std::cout 
+        << "Socket successfully created! Press <C-c> to stop running"
+    << std::endl;
+
+    uint8_t buf[65536];
+
+    while (true) {
+        // Wait for packets
+        ssize_t size = recvfrom(sockfd, buf, sizeof(buf), 0, nullptr, nullptr);
+        if (size < 0) break;
+
+        EthernetHeader* eth = (EthernetHeader*)buf;
+        auto src_oct_1 = eth->src_mac[0];
+        auto src_oct_2 = eth->src_mac[1];
+        auto src_oct_3 = eth->src_mac[2];
+        auto src_oct_4 = eth->src_mac[3];
+        auto src_oct_5 = eth->src_mac[4];
+        auto src_oct_6 = eth->src_mac[5];
+
+        std::cout 
+            << "MAC: "
+            << (int)src_oct_1 << ":"
+            << (int)src_oct_2 << ":"
+            << (int)src_oct_3 << ":"
+            << (int)src_oct_4 << ":"
+            << (int)src_oct_5 << ":"
+            << (int)src_oct_6
+        << std::endl;
+    }
 
     close(sockfd);
 	return EXIT_SUCCESS;
